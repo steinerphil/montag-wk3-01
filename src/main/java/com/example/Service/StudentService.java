@@ -5,26 +5,24 @@ import com.example.Repo.StudentRepo;
 import java.util.List;
 
 public class StudentService {
+
 private StudentRepo studentRepo = new StudentRepo();
-    List<Student> students;
 
-    public StudentService(){}
-
-    public StudentService(List<Student> students) {
-        this.students = students;
-    }
 
     public Student add(Student student) {
-        studentRepo.add(student);
-        return student;
+        return studentRepo.add(student);
     }
 
-    public Student getStudent(int id) {
-        return studentRepo.get(id);
+    public Student getById(int id) {
+        return studentRepo.getById(id);
     }
 
     public List<Student> list() {
         return studentRepo.list();
+    }
+
+    public List<Student> getByName(String name) {
+        return studentRepo.getByName(name);
     }
 }
 
