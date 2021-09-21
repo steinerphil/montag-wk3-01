@@ -4,6 +4,7 @@ import com.example.Model.Student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class StudentRepo {
 
@@ -31,12 +32,16 @@ public class StudentRepo {
     public List<Student> getByName(String name) {
         List<Student> studentsWithName = new ArrayList<>();
         for (Student student : students) {
-//            System.out.println(students.size());
-//            System.out.println(".getName(): " + student.getName() + " | .equals(name): " + name);
-            if (student.getName().equals(name)) {
+            if (student.getName().equalsIgnoreCase(name)) {
                 studentsWithName.add(student);
             }
         }
         return studentsWithName;
     }
+
+    public void remove(int id) {
+        Student student = getById(id);
+        students.remove(student);
+    }
+
 }

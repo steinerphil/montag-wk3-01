@@ -21,8 +21,12 @@ private StudentRepo studentRepo = new StudentRepo();
         return studentRepo.list();
     }
 
-    public List<Student> getByName(String name) {
+    public List<Student> search(String name) {
         return studentRepo.getByName(name);
+    }
+
+    public void delete(String id) {
+        studentRepo.remove(Integer.parseInt(id));
     }
 }
 

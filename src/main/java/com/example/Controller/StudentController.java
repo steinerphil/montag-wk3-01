@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 
 @RestController //macht aus der klasse einen rest controller
@@ -27,13 +28,13 @@ public class StudentController {
         return studentService.getById(id);
     }
 
-    @GetMapping()
-    List<Student> getStudentByName(@RequestParam(required = false) String name) {
-        if (name != null) {
-            return studentService.getByName(name);
-        } else {
-            return studentService.list();
+    @GetMapping
+    public List<Student> searchStudents(@RequestParam Optional<String> search){
+        if(search.isPresent()){
+            System.out.println(search.get());
+            return studentService.search(search.get());
         }
+        return studentService.list();
     }
 
     @PutMapping
@@ -41,6 +42,9 @@ public class StudentController {
         return studentService.add(student);
     }
 
-
+    @DeleteMapping("{id}")
+    public void deleteStudent(@PathVariable String id){
+        studentService.delete(id);
+}
 
 }
