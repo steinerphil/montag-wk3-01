@@ -47,7 +47,7 @@ public class SpecialStudentController {
     @PutMapping("{id}")
     public ResponseEntity<String> updateStudent(@RequestBody String name  , @PathVariable("id") int id){
         studentService.save(name, id);
-        return ResponseEntity.ok("student name updated");
+        return ResponseEntity.ok("student name updated to: " + name);
     }
 
 

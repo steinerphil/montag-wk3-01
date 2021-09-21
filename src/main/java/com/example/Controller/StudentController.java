@@ -3,6 +3,8 @@ package com.example.Controller;
 import com.example.Model.Student;
 import com.example.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,8 +47,9 @@ public class StudentController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteStudent(@PathVariable String id) {
-        studentService.delete(id);
+    public ResponseEntity<Student> deleteStudent(@PathVariable String id) {
+        ;
+        return new ResponseEntity<>(studentService.delete(id), HttpStatus.OK);  //gibt in postman aus
     }
 
 }

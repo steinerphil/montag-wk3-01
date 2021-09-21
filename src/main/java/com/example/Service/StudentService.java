@@ -35,8 +35,8 @@ private final StudentRepo studentRepo;
         return studentRepo.getByName(name);
     }
 
-    public void delete(String id) {
-        studentRepo.remove(Integer.parseInt(id));
+    public Student delete(String id) {
+        return studentRepo.remove(Integer.parseInt(id));
     }
 
     public void save(String updateStudent, int id) {

@@ -40,9 +40,10 @@ public class StudentRepo {
         return studentsWithName;
     }
 
-    public void remove(int id) {
+    public Student remove(int id) {
         Student student = getById(id);
         students.remove(student);
+        return student;
     }
 
     public void updateName(String name, int id){
