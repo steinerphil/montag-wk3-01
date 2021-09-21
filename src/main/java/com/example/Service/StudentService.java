@@ -2,11 +2,21 @@ package com.example.Service;
 
 import com.example.Model.Student;
 import com.example.Repo.StudentRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service
 public class StudentService {
 
-private StudentRepo studentRepo = new StudentRepo();
+private final StudentRepo studentRepo;
+
+
+    @Autowired
+    public StudentService(StudentRepo studentRepo) {
+        this.studentRepo = studentRepo;
+    }
 
 
     public Student add(Student student) {
@@ -27,6 +37,10 @@ private StudentRepo studentRepo = new StudentRepo();
 
     public void delete(String id) {
         studentRepo.remove(Integer.parseInt(id));
+    }
+
+    public void save(String updateStudent, int id) {
+       studentRepo.updateName(updateStudent, id);
     }
 }
 

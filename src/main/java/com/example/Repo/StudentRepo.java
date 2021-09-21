@@ -1,11 +1,12 @@
 package com.example.Repo;
 
 import com.example.Model.Student;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
+@Repository
 public class StudentRepo {
 
     private final List<Student> students = new ArrayList<>();
@@ -42,6 +43,10 @@ public class StudentRepo {
     public void remove(int id) {
         Student student = getById(id);
         students.remove(student);
+    }
+
+    public void updateName(String name, int id){
+        getById(id).setName(name);
     }
 
 }
